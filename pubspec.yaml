@@ -31,14 +31,33 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  http: ^1.1.0
+  flutter_dotenv: ^5.1.0
+  enhanced_url_launcher: ^6.1.12
+  pdf: ^3.6.6
+  printing: ^5.9.3
+  path_provider: ^2.0.13
+  universal_html: ^2.0.8
+  intl_phone_field: ^3.2.0
+  file_picker: ^7.0.2
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  firebase_storage: ^11.6.0
+  random_avatar: ^0.0.8
+  google_sign_in: ^6.1.5
+  googleapis: ^12.0.0
+  googleapis_auth: ^1.2.3
+  flutter_rating_bar: ^4.0.1
+  readmore: ^3.0.0
+  googledrivehandler: ^1.0.6
+  open_file: ^3.5.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -60,14 +79,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - image/ibox.png
-    - image/informa.png
-    - image/matahari.png
-    - image/warungWareg.png
-    - image/aqua.png
-    - image/hisana.jpeg
-    - image/kfc.jpg
-    - image/kfc-logo.png
+    - image/background_picture1.png
+    - image/background_picture2.png
+    - image/AI-gen.png
+    - image/upload.png
+    - image/drive.png
+    - image/google.png
+    - image/mail-check.png
+    - image/event_available.png
 
   
   # An image asset can refer to one or more resolution-specific "variants", see

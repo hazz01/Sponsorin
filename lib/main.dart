@@ -1,8 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:sponsorin/auth/auth.dart';
+import 'package:sponsorin/page%20EO/Page%20deskripsi%20usaha/informasi-usaha.dart';
+import 'package:sponsorin/page%20EO/Search/search-page.dart';
+import 'package:sponsorin/page%20EO/add%20event/add-event.dart';
+import 'package:sponsorin/page%20EO/akun/login-page.dart';
+import 'package:sponsorin/page%20EO/page%20home/homepage.dart';
+import 'package:sponsorin/page%20EO/profile/profile.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:sponsorin/page/homepage.dart';
 import 'package:sponsorin/style/textstyle.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(MyApp());
 }
 
@@ -19,7 +32,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         textTheme: const TextTheme(),
       ),
-      home: HomePage(),
+      home: Homepage(),
     );
   }
 }
@@ -32,6 +45,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
+  final List<Widget> _pages = [
+    Homepage(),
+    SearchPage(),
+    AddEvent(), // Add your other pages here
+    Profile(), // Example: Placeholder, you can add actual pages
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -41,10 +61,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Homepage(),
+      // The body updates according to the selected index
+      body: _pages[_selectedIndex],
+
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color.fromRGBO(244, 244, 244, 100),
-        type: BottomNavigationBarType.fixed, // Menonaktifkan animasi
+        type: BottomNavigationBarType.fixed, // Disable animation
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: _buildNavItem(0, Icons.home_outlined),
@@ -69,13 +91,16 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Business Card Widget (Unrelated to Navigation Logic)
   Widget _businessCard(String businessName, String category, Color color) {
     return Card(
       elevation: 3,
       child: ListTile(
         leading: Icon(Icons.store, color: color),
-        title:
-            Text(businessName, style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(
+          businessName,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         subtitle: Text(category),
         trailing: ElevatedButton(
           onPressed: () {},
@@ -85,6 +110,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Bottom Navigation Item UI
   Widget _buildNavItem(int index, IconData icon) {
     return Stack(
       alignment: Alignment.center,
@@ -102,8 +128,10 @@ class _HomePageState extends State<HomePage> {
           Container(
             width: 50,
             height: 50,
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Color(0xFF2C3E50)),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0xFF2C3E50),
+            ),
           ),
         Icon(
           icon,
